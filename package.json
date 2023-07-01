@@ -1,6 +1,6 @@
 {
-  "name": "ts-treemap",
-  "version": "1.1.0",
+  "name": "ts-treemap-next",
+  "version": "1.0.0",
   "description": "a TypeScript implementation of TreeMap",
   "main": "dist/TreeMap.js",
   "types": "dist/TreeMap.d.ts",
@@ -17,9 +17,10 @@
     "map",
     "typescript"
   ],
-  "author": "yuyasvx",
+  "author": "JellyBrick <shlee1503@naver.com>",
+  "contributors": ["YUYASVX <yuyasvx@gmail.com>", "JellyBrick <shlee1503@naver.com>", "emdiet <mortificaris@gmail.com>"],
   "license": "MIT",
-  "repository": "github:yuyasvx/ts-treemap",
+  "repository": "github:jellybrick/ts-treemap",
   "devDependencies": {
     "@types/jest": "^29.5.2",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
