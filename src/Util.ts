@@ -5,15 +5,12 @@ export const isIterable = <K, V>(value: unknown): value is Iterable<readonly [K,
     return false
   }
   const itr = value as Iterable<readonly [K, V]>
-  if (itr[Symbol.iterator] == null) {
-    return false
-  }
-  return true
+  return itr[Symbol.iterator] != null
 }
 
 export const isComparable = (object: unknown): object is Comparable<unknown> => {
   const toString = Object.prototype.toString
-  const cast = object as Record<string, Function | undefined>
+  const cast = object as Record<string, (a: number, b: number) => number | undefined>
   return cast.compare != null && toString.call(cast.compare).endsWith('Function]')
 }
 

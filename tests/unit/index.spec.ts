@@ -40,12 +40,18 @@ describe('TreeMap test', () => {
     expect(map2.comparator(10, 9)).toBe(0)
     expect(map2.size).toBe(0)
 
-    const iterableArray: [number, string][] = [[1, 'a'], [2, 'b']]
+    const iterableArray: [number, string][] = [
+      [1, 'a'],
+      [2, 'b']
+    ]
     const map3 = new TreeMap<number, string>(iterableArray, compareFn)
     const map4 = new TreeMap<number, string>(iterableArray)
     expect(map3.comparator(10, 9)).toBe(-1)
     expect(map3.size).toBe(2)
-    expect(Array.from(map3.entries())).toStrictEqual([[2, 'b'], [1, 'a']])
+    expect(Array.from(map3.entries())).toStrictEqual([
+      [2, 'b'],
+      [1, 'a']
+    ])
     expect(map4.comparator(10, 9)).toBe(1)
     expect(map4.size).toBe(2)
     expect(Array.from(map4.entries())).toStrictEqual(iterableArray)
@@ -57,9 +63,15 @@ describe('TreeMap test', () => {
     expect(map6.comparator(10, 9)).toBe(0)
     expect(map6.size).toBe(0)
 
-    const plainMap = new Map([[2, 'b'], [1, 'a']])
+    const plainMap = new Map([
+      [2, 'b'],
+      [1, 'a']
+    ])
     const map7 = new TreeMap(plainMap.entries())
-    expect(Array.from(map7.entries())).toStrictEqual([[1, 'a'], [2, 'b']])
+    expect(Array.from(map7.entries())).toStrictEqual([
+      [1, 'a'],
+      [2, 'b']
+    ])
 
     const comparableObjectMap: TreeMap<ComparableTest, string> = new TreeMap()
     comparableObjectMap.set(new ComparableTest(3), 'c')
@@ -145,7 +157,13 @@ describe('TreeMap test', () => {
 
     expect(Array.from(treeMap.keys())).toStrictEqual([0, 5, 10, 15, 20])
     expect(Array.from(treeMap.values())).toStrictEqual(['a', 'b', 'c', 'd', 'e'])
-    expect(Array.from(treeMap.entries())).toStrictEqual([[0, 'a'], [5, 'b'], [10, 'c'], [15, 'd'], [20, 'e']])
+    expect(Array.from(treeMap.entries())).toStrictEqual([
+      [0, 'a'],
+      [5, 'b'],
+      [10, 'c'],
+      [15, 'd'],
+      [20, 'e']
+    ])
   })
 
   it('first / last', () => {

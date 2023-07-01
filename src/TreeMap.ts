@@ -62,9 +62,8 @@ export default class TreeMap<K, V> extends Map {
   }
 
   private compare(a: K, b: K): number {
-    const val = Math.sign(this.compareFn(a, b))
     // return this.reverseOrder ? -val : val
-    return val
+    return Math.sign(this.compareFn(a, b))
   }
 
   /**
@@ -194,7 +193,7 @@ export default class TreeMap<K, V> extends Map {
   }
 
   /**
-   * Copies all of the entries from the given map to this map.
+   * Copies all the entries from the given map to this map.
    * @param map
    */
   public setAll(map: Map<K, V>): this {
@@ -217,7 +216,7 @@ export default class TreeMap<K, V> extends Map {
   }
 
   /**
-   * Removes all of the entry from this map.
+   * Removes all the entry from this map.
    */
   public clear(): void {
     super.clear()
@@ -280,7 +279,7 @@ export default class TreeMap<K, V> extends Map {
    * Returns the last key currently in this map, or `undefined` if the map is empty.
    */
   public lastKey(): K | undefined {
-    return [...this.sortedKeys].reverse()[0]
+    return this.sortedKeys[this.sortedKeys.length - 1]
   }
 
   /**
@@ -329,8 +328,7 @@ export default class TreeMap<K, V> extends Map {
    * @param key
    */
   public floorKey(key: K): K | undefined {
-    const filtered = this.sortedKeys.filter((existKey) => this.compare(existKey, key) <= 0)
-    return filtered.reverse()[0]
+    return this.sortedKeys.findLast((existKey) => this.compare(existKey, key) <= 0)
   }
 
   /**
@@ -353,8 +351,7 @@ export default class TreeMap<K, V> extends Map {
    * @param key
    */
   public ceilingKey(key: K): K | undefined {
-    const filtered = this.sortedKeys.filter((existKey) => this.compare(existKey, key) >= 0)
-    return filtered[0]
+    return this.sortedKeys.find((existKey) => this.compare(existKey, key) >= 0)
   }
 
   /**
@@ -377,8 +374,7 @@ export default class TreeMap<K, V> extends Map {
    * @param key
    */
   public lowerKey(key: K): K | undefined {
-    const filtered = this.sortedKeys.filter((existKey) => this.compare(existKey, key) < 0)
-    return filtered.reverse()[0]
+    return this.sortedKeys.findLast((existKey) => this.compare(existKey, key) < 0)
   }
 
   /**
@@ -401,8 +397,7 @@ export default class TreeMap<K, V> extends Map {
    * @param key
    */
   public higherKey(key: K): K | undefined {
-    const filtered = this.sortedKeys.filter((existKey) => this.compare(existKey, key) > 0)
-    return filtered[0]
+    return this.sortedKeys.find((existKey) => this.compare(existKey, key) > 0)
   }
 
   /**
@@ -446,9 +441,9 @@ export default class TreeMap<K, V> extends Map {
       .splitLower(higherKey, includeHigherKey);
   }
 
-  public forEach(callbackfn: (value: V, key: K, map: Map<K, V>) => void, thisArg?: unknown): void {
+  public forEach(callbackFn: (value: V, key: K, map: Map<K, V>) => void, thisArg?: unknown): void {
     Array.from(this.entries()).forEach(([k, v]) => {
-      callbackfn(v, k, this)
+      callbackFn(v, k, this)
     }, thisArg)
   }
 }
