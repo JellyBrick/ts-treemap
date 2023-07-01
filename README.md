@@ -1,18 +1,17 @@
-[🇯🇵 日本語はここ](https://github.com/yuyasvx/ts-treemap/blob/master/README-ja.md)
+[🇯🇵 日本語はここ](https://github.com/JellyBrick/ts-treemap/blob/master/README-ja.md)
 
-# ts-treemap
+# ts-treemap-next
 
-a TypeScript implementation of TreeMap
+a TypeScript implementation of TreeMap (forked from [yuyasvx's TreeMap](https://github.com/yuyasvx/ts-treemap))
 
-[![CI](https://circleci.com/gh/yuyasvx/ts-treemap/tree/master.svg?style=shield&circle-token=f7dfd3305577f40429c6b2046bc658cbc3614997)](https://circleci.com/gh/yuyasvx/ts-treemap)
-[![codecov](https://codecov.io/gh/yuyasvx/ts-treemap/branch/master/graph/badge.svg)](https://codecov.io/gh/yuyasvx/ts-treemap)
+[![codecov](https://codecov.io/gh/JellyBrick/ts-treemap/branch/master/graph/badge.svg)](https://codecov.io/gh/JellyBrick/ts-treemap)
 
 You can use some features of [TreeMap](https://docs.oracle.com/javase/8/docs/api/java/util/TreeMap.html) in Java with TypeScript.
 
 # Installation
 
 ```
-npm i ts-treemap --save
+npm i ts-treemap-next --save
 ```
 
 # Usage
@@ -20,7 +19,7 @@ npm i ts-treemap --save
 ## Create New TreeMap and Add Entries
 
 ```typescript
-import TreeMap from 'ts-treemap'
+import TreeMap from 'ts-treemap-next'
 
 const treeMap = new TreeMap<number, string>()
 
@@ -78,7 +77,7 @@ If you want to use other types as keys, you can use one of the following methods
 **Method 1: Pass the comparison function to the constructor to create a map**
 
 ```typescript
-import TreeMap from 'ts-treemap'
+import TreeMap from 'ts-treemap=next'
 
 interface IKeyObject {
   value: number
@@ -91,7 +90,7 @@ objectMap.set({ value: 1 }, 'foo') // OK
 **Method 2: Use the class which has the comparison function `compare()` as a key**
 
 ```typescript
-import TreeMap, { Comparable } from 'ts-treemap'
+import TreeMap, { Comparable } from 'ts-treemap-next'
 
 class ExampleObject implements Comparable<ExampleObject> {
   value: number
@@ -116,7 +115,7 @@ If TreeMap is created without passing parameters in the above case, `Error` will
 **✅ Do:**
 
 ```typescript
-import TreeMap from 'ts-treemap'
+import TreeMap from 'ts-treemap-next'
 import Day from 'dayjs'
 
 const numberMap = new TreeMap<number, string>()
@@ -138,7 +137,7 @@ const objectMap2 = new TreeMap<Day.Dayjs, string>([[Day('2019-01-01'), 'foo']], 
 **🛑 Don’t:**
 
 ```typescript
-import TreeMap from 'ts-treemap'
+import TreeMap from 'ts-treemap-next'
 import Day from 'dayjs'
 
 // compareFn is not defined
